@@ -1,5 +1,6 @@
 # AparatVideoUploader
-[![Build Status](https://travis-ci.org/m2sh/AparatVideoUploader.svg?branch=master)](https://travis-ci.org/m2sh/AparatVideoUploader)
+[![Build Status](https://travis-ci.org/m2sh/AparatVideoUploader.svg?branch=master)](https://travis-ci.org/m2sh/AparatVideoUploader)  
+
 Simple Video Uploader for [Aparat.com](http://aparat.com) based on [Goutte](https://github.com/FriendsOfPHP/Goutte) .
 
 ###Installation 
