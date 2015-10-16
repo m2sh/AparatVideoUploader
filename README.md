@@ -1,12 +1,12 @@
-[![Build Status](https://travis-ci.org/m2sh/AparatVideoUploader.svg?branch=master)](https://travis-ci.org/m2sh/AparatVideoUploader)
 # AparatVideoUploader
+[![Build Status](https://travis-ci.org/m2sh/AparatVideoUploader.svg?branch=master)](https://travis-ci.org/m2sh/AparatVideoUploader)
 Simple Video Uploader for [Aparat.com](http://aparat.com) based on [Goutte](https://github.com/FriendsOfPHP/Goutte) .
 
 ###Installation 
-Using `Composer` :
+Using `Composer` :  
 `composer require m2sh/aparatvideouploader`  
 Or  
-Clone this repo with `git clone` command:  
+Clone this repo with `git clone` command  
 Then install Dependencies with `composer install`
 ###Requirments
 
@@ -26,7 +26,7 @@ Specify  `username` & `password` of your aparat.com account :
     $uploader->setAuthenticationInfo('YOUR USERNAME', 'YOUR PASSWORD');
 
 ###Methods
-####Login()
+####Login
 Login User to aparat.com :
 `$uploader->login();`
 To find out that the login is successful, check `isUserLoggedIn` property :
@@ -35,7 +35,7 @@ To find out that the login is successful, check `isUserLoggedIn` property :
 	    // do something
     }
 
-#### PrepareUpload()
+#### PrepareUpload
 Prepares uploader to uploading video :
 `$uploader->prepareUpload();`
 Also you can use Chain method like this :
