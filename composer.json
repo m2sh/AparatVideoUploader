@@ -2,6 +2,8 @@
     "name": "m2sh/aparatvideouploader",
     "description": "a simple class that uploads video into aparat.com video sharing website",
     "type": "library",
+    "minimum-stability": "dev",
+    "keywords": ["aparat", "uploader", "goutte"], 
     "require": {
         "fabpot/goutte": "3.1",
         "mwhite/random-uagent":"dev-master"
