@@ -28,8 +28,8 @@ Specify  `username` & `password` of your aparat.com account :
 
 ###Methods
 ####Login
-Login User to aparat.com :
-`$uploader->login();`
+Login User to aparat.com :  
+`$uploader->login();`  
 To find out that the login is successful, check `isUserLoggedIn` property :
 
     if($uploader->isUserLoggedIn) {
