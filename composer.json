@@ -1,0 +1,21 @@
+{
+    "name": "m2sh/aparatvideouploader",
+    "description": "a simple class that uploads video into aparat.com video sharing website",
+    "type": "library",
+    "require": {
+        "fabpot/goutte": "3.1",
+        "mwhite/random-uagent":"dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "m2sh",
+            "email": "m2shm2sh@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+        	"m2sh\\": "m2sh/"
+    	}
+    }
+}
