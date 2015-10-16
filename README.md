@@ -5,8 +5,8 @@ Simple Video Uploader for [Aparat.com](http://aparat.com) based on [Goutte](http
 ###Installation 
 Using `Composer` :
 `composer require m2sh/aparatvideouploader`  
-Or 
-Clone this repo with `git clone` command
+Or  
+Clone this repo with `git clone` command:  
 Then install Dependencies with `composer install`
 ###Requirments
 
@@ -63,7 +63,7 @@ Upload Video From file to your account :
 Get uploaded video list
 `$videoList = $uploader->getVideoList();'`
 #### RemoveVideo
-Removes Video with given `remove_link` url from `GetVideoList` method :
+Removes Video with given `remove_link` url from `GetVideoList` method :  
 `$uploader->removeVideo($videoList[0]['remove_link']);`
 
 ###Issues
