@@ -37,10 +37,10 @@ To find out that the login is successful, check `isUserLoggedIn` property :
     }
 
 #### PrepareUpload
-Prepares uploader to uploading video :
-`$uploader->prepareUpload();`
-Also you can use Chain method like this :
-`$uploader->login()->prepareUpload();`
+Prepares uploader to uploading video :  
+`$uploader->prepareUpload();`  
+Also you can use Chain method like this :  
+`$uploader->login()->prepareUpload();`  
 ####GetVideoCategories
 Get Video Categories for UploadVideo
 
