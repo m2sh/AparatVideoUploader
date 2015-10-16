@@ -6,7 +6,7 @@ php:
 
 before_script:
   - composer selfupdate
-  - compower install
+  - composer install
 
 script:
   - phpunit --bootstrap tests/bootstrap.php tests/AparatVideoUploaderTest.php
