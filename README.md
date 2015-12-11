@@ -8,7 +8,7 @@ Using `Composer` :
 `composer require m2sh/aparatvideouploader`  
 Or  
 Clone this repo with  
-	git clone https://github.com/m2sh/AparatVideoUploader  
+	 `git clone https://github.com/m2sh/AparatVideoUploader`  
 Then install Dependencies with `composer install`
 ###Requirments
 
@@ -62,7 +62,7 @@ Upload Video From file to your account :
     
     $uploader->uploadFromFile($file,$videoDetail);
 #### GetVideoList
-Get uploaded video list
+Get uploaded video list  
 `$videoList = $uploader->getVideoList();'`
 #### RemoveVideo
 Removes Video with given `remove_link` url from `GetVideoList` method :  
