@@ -7,7 +7,8 @@ Simple Video Uploader for [Aparat.com](http://aparat.com) based on [Goutte](http
 Using `Composer` :  
 `composer require m2sh/aparatvideouploader`  
 Or  
-Clone this repo with `git clone` command  
+Clone this repo with  
+	git clone https://github.com/m2sh/AparatVideoUploader  
 Then install Dependencies with `composer install`
 ###Requirments
 
@@ -69,4 +70,3 @@ Removes Video with given `remove_link` url from `GetVideoList` method :
 
 ###Issues
 If you have find any bug in this package please create new issue.
- 
