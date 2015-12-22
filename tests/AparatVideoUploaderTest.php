@@ -2,90 +2,96 @@
 
 use PHPUnit_Framework_TestCase as TestCase;
 
+class AparatVideoUploaderTest extends TestCase
+{
+    private $uploader;
 
-class AparatVideoUploaderTest extends TestCase {
+    public function setUp()
+    {
+        $this->uploader = new \m2sh\AparatVideoUploader\AparatVideoUploader();
 
-	private $uploader;
+        $username = getenv('APARAT_USERNAME');
+        $password = getenv('APARAT_PASSWORD');
 
-	public function setUp() {
-		$this->uploader = new \m2sh\AparatVideoUploader\AparatVideoUploader();
+        $this->uploader->setAuthenticationInfo($username, $password);
+    }
 
-		$username = getenv('APARAT_USERNAME');
-		$password =  getenv('APARAT_PASSWORD');
+    public function testUserLogin()
+    {
+        $this->uploader->login();
 
-		$this->uploader->setAuthenticationInfo($username,$password);
-	}
+        $this->assertTrue($this->uploader->isUserLoggedIn);
 
-	public function testUserLogin() {
-		$this->uploader->login();
+        return $this->uploader;
+    }
 
-		$this->assertTrue($this->uploader->isUserLoggedIn);
+    /**
+     * @depends testUserLogin 
+     */
+    public function testPrepareUpload($uploader)
+    {
+        $uploader->login()->prepareUpload();
 
-		return $this->uploader;
-	}
+        $this->assertTrue($uploader->isReadyToUpload);
 
-	/**
-	 * @depends testUserLogin 
-	 */
-	public function testPrepareUpload($uploader) {
-		$uploader->login()->prepareUpload();
+        return $uploader;
+    }
 
-		$this->assertTrue($uploader->isReadyToUpload);
+    /**
+     * @depends testPrepareUpload
+     */
+    public function testGetVideoCategories($uploader)
+    {
+        $data = json_decode(file_get_contents(__DIR__.'/data/cats.json'), true);
 
-		return $uploader;
-	}
+        $cats = $uploader->getVideoCategories();
 
-	/**
-	 * @depends testPrepareUpload
-	 */
-	public function testGetVideoCategories($uploader) {
-		$data = json_decode(file_get_contents(__DIR__ . '/data/cats.json'),true);
+        $this->assertEquals($data, $cats);
+    }
 
-		$cats = $uploader->getVideoCategories();
+    /**
+     * @depends testPrepareUpload
+     */
+    public function testUploadFromFile($uploader)
+    {
+        $file = __DIR__.'/video/ghost.mp4';
 
-		$this->assertEquals($data,$cats);
-	}
+        $videoDetail = [
+            'title'       => 'پسری که روح می‌شود',
+            'description' => 'شوخی با پدر',
+            'category'    => 2,
+            'tags'        =>  [
+                'روح',
+                'شوخی',
+            ],
+            'comment_permission' => 'no',
+        ];
 
-	/**
-	 * @depends testPrepareUpload
-	 */
-	public function testUploadFromFile($uploader) {
-		$file =  __DIR__ . "/video/ghost.mp4";
+        $this->assertTrue($uploader->uploadFromFile($file, $videoDetail));
 
-		$videoDetail = array(
-		    'title' => 'پسری که روح می‌شود',
-		    'description' => 'شوخی با پدر',
-		    'category' => 2,
-		    'tags' => array (
-		        'روح',
-		        'شوخی'
-		    ),
-		    'comment_permission' => 'no'
-		);
+        return $uploader;
+    }
 
-		$this->assertTrue($uploader->uploadFromFile($file,$videoDetail));
+    /**
+     * @depends testUploadFromFile
+     */
+    public function testGetVideoList($uploader)
+    {
+        $videoList = $uploader->getVideoList();
 
-		return $uploader;
-	}	
+        $this->assertGreaterThanOrEqual(1, count($videoList));
 
-	/**
-	 * @depends testUploadFromFile
-	 */
-	public function testGetVideoList($uploader) {
-		$videoList = $uploader->getVideoList();
+        return $videoList;
+    }
 
-		$this->assertGreaterThanOrEqual(1,count($videoList));
+    /**
+     * @depends testUploadFromFile
+     * @depends testGetVideoList
+     */
+    public function testRemoveVideo($uploader, $videoList)
+    {
+        $lastVideo = $videoList[0];
 
-		return $videoList;
-	}
-	/**
-	 * @depends testUploadFromFile
-	 * @depends testGetVideoList
-	 */
-	public function testRemoveVideo($uploader,$videoList) {
-		$lastVideo = $videoList[0];
-
-		$this->assertTrue($uploader->removeVideo($lastVideo['remove_link']));
-	}
-
+        $this->assertTrue($uploader->removeVideo($lastVideo['remove_link']));
+    }
 }
